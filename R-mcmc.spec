@@ -4,7 +4,7 @@
 #
 Name     : R-mcmc
 Version  : 0.9.6
-Release  : 20
+Release  : 21
 URL      : https://cran.r-project.org/src/contrib/mcmc_0.9-6.tar.gz
 Source0  : https://cran.r-project.org/src/contrib/mcmc_0.9-6.tar.gz
 Summary  : Markov Chain Monte Carlo
@@ -14,6 +14,7 @@ Requires: R-mcmc-lib = %{version}-%{release}
 BuildRequires : R-Iso
 BuildRequires : R-xtable
 BuildRequires : buildreq-R
+BuildRequires : util-linux
 
 %description
 Markov chain Monte Carlo (MCMC).  Users specify the distribution by an
@@ -36,13 +37,13 @@ lib components for the R-mcmc package.
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
-export LANG=C
-export SOURCE_DATE_EPOCH=1552885518
+export LANG=C.UTF-8
+export SOURCE_DATE_EPOCH=1571863062
 
 %install
-export SOURCE_DATE_EPOCH=1552885518
+export SOURCE_DATE_EPOCH=1571863062
 rm -rf %{buildroot}
-export LANG=C
+export LANG=C.UTF-8
 export CFLAGS="$CFLAGS -O3 -flto -fno-semantic-interposition "
 export FCFLAGS="$CFLAGS -O3 -flto -fno-semantic-interposition "
 export FFLAGS="$CFLAGS -O3 -flto -fno-semantic-interposition "
@@ -71,12 +72,12 @@ R CMD INSTALL --preclean --install-tests --built-timestamp=${SOURCE_DATE_EPOCH} 
 cp ~/.stash/* %{buildroot}/usr/lib64/R/library/*/libs/ || :
 %{__rm} -rf %{buildroot}%{_datadir}/R/library/R.css
 %check
-export LANG=C
+export LANG=C.UTF-8
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export _R_CHECK_FORCE_SUGGESTS_=false
-R CMD check --no-manual --no-examples --no-codoc  mcmc || :
+R CMD check --no-manual --no-examples --no-codoc mcmc || :
 
 
 %files
