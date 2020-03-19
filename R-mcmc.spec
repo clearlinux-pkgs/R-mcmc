@@ -4,7 +4,7 @@
 #
 Name     : R-mcmc
 Version  : 0.9.6.1
-Release  : 24
+Release  : 25
 URL      : https://cran.r-project.org/src/contrib/mcmc_0.9-6.1.tar.gz
 Source0  : https://cran.r-project.org/src/contrib/mcmc_0.9-6.1.tar.gz
 Summary  : Markov Chain Monte Carlo
